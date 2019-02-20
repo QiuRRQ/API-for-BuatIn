@@ -1,0 +1,52 @@
+[
+    {
+        "title": "Playing with GraphQL yoga and mongoose",
+        "url": "/aurelkurtula/playing-with-graphql-yoga-and-mongoose-f4f",
+        "tags": [
+            "graphql",
+            "graphqlyoga",
+            "mongodb"
+        ]
+    },
+    {
+        "title": "Creating a text editor in Electron: part 3 - Setting Preferences",
+        "url": "/aurelkurtula/creating-a-text-editor-in-electron-part-3---setting-preferences-584h",
+        "tags": [
+            "electron",
+            "javascript",
+            "node"
+        ]
+    },
+    {
+        "title": "Creating a text editor in Electron: part 2 - writing files",
+        "url": "/aurelkurtula/creating-a-text-editor-in-electron-part-2---writing-files-l80",
+        "tags": [
+            "electron",
+            "javascript",
+            "node"
+        ]
+    },
+    {
+        "title": "Creating a text editor in Electron: part 1 - Reading files",
+        "url": "/aurelkurtula/creating-a-text-editor-in-electron-reading-files-13b8",
+        "tags": [
+            "electron",
+            "javascript",
+            "node"
+        ]
+    },
+    {
+        "title": "",
+        "tags": []
+    },
+    {
+        "title": "What are some projects or exercises I can do to practice HTML and CSS?",
+        "url": "/aurelkurtula/what-are-some-projects-or-exercises-i-can-do-to-practice-html-and-css-5f6a",
+        "tags": [
+            "htlm",
+            "css",
+            "design",
+            "beginners"
+        ]
+    }
+]

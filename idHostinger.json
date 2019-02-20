@@ -1,0 +1,23 @@
+[
+    {
+        "title": "Web Hosting Single",
+        "old_price": "Rp.87,555",
+        "top_percentage": "Hemat 82%",
+        "actual_price": "15,889",
+        "Deskripsi": "1 Website1 Akun Email100 GB Bandwidth1X Processing Power & Memory"
+    },
+    {
+        "title": "Web Hosting Premium",
+        "old_price": "Rp.130,945",
+        "top_percentage": "Hemat 75%",
+        "actual_price": "32,325",
+        "Deskripsi": "Jumlah Website UnlimitedAkun Email UnlimitedBandwidth Unlimited2X Processing Power & MemoryBackup Mingguan"
+    },
+    {
+        "title": "Web Hosting Bisnis",
+        "old_price": "Rp.174,775",
+        "top_percentage": "Hemat 75%",
+        "actual_price": "43,285",
+        "Deskripsi": "Semua Fitur dari Paket PremiumBackup HarianGratis Sertifikat SSL4X Processing Power & Memory"
+    }
+]

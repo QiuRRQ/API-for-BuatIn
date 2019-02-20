@@ -1,0 +1,1 @@
+{"net":{"http_server_properties":{"servers":[{"https://www.hostinger.co.id":{"supports_spdy":true}},{"https://accounts.google.com":{"alternative_service":[{"advertised_versions":[43],"expiration":"13195528104313257","port":443,"protocol_str":"quic"}],"supports_spdy":true}}],"version":5},"network_qualities":{"CAISC3NwZWVkeUA3ZTMwGICAgID4/////wE=":"4G"}}}
