@@ -1,0 +1,60 @@
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+<canvas id="canvas" width="1920" height="1080"></canvas>
+<script>
+  var c = document.getElementById("canvas");
+  var ctx = c.getContext("2d");
+  var socket = io();
+  window.onbeforeunload = function () {
+        socket.emit('callback','close')
+  }
+  function getMousePos(evt) {
+      var rect = c.getBoundingClientRect();
+      return {
+        x: evt.clientX - rect.left,
+        y: evt.clientY - rect.top
+      };
+  }
+  function loadImage(url) {
+    return new Promise(resolve => { let i = new Image(); i.onload = ()=>{resolve(i)}; i.src=url+'?rand='+(new Date()).getTime(); });
+  }
+
+  async function drawImage(ctx) {
+    let img = await loadImage("/screencap.png");
+    ctx.drawImage(img, 0, 0);
+  }
+
+  function autoRefresh(){
+    setTimeout(function(){
+      autoRefresh()
+      socket.emit('hiserver','screencap')
+    },3000)
+  }
+
+  c.addEventListener('click', function(e) {
+    let mouse = getMousePos(e)
+    ctx.fillStyle = "#000000";
+    ctx.fillRect(mouse.x, mouse.y, 4, 4);
+    socket.emit('event',JSON.stringify({
+      click:true,
+      x:mouse.x,
+      y:mouse.y,
+    }))
+  }, false);
+
+  $(function () {
+    socket.on('input',function(rclass){
+      socket.emit('fill',JSON.stringify({
+        rclass : rclass,
+        text : prompt("entry",""),
+      }))
+    })
+    socket.on('hiweb',function(msg){
+      console.log("FUCK")
+      if(msg == "refresh"){
+        drawImage(ctx)
+      }
+    })
+    autoRefresh()
+  });
+</script>
