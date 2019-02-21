@@ -50,4 +50,4 @@ app.get('/', function(req, res, next){
 	
 })
 
-app.listen(7070);
+app.listen(8080);
