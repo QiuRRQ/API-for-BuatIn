@@ -4,7 +4,7 @@ const express = require('express');
 
 var app = express();
 
-var server_port = process.env.PORT || 8080;
+var server_port = process.env.PORT || 1214;
 
 app.get('/', function(req, res, next){
 
