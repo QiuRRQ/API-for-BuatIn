@@ -4,13 +4,13 @@ const express = require('express');
 
 var app = express();
 
-var server_port = process.env.PORT || 1214;
+var server_port = 8080;
 
 app.get('/', function(req, res, next){
 
 	let scrape = async () => {
 
-	  const browser = await puppeteer.launch({headless: false, args: ['--no-sandbox', '--disable-setuid-sandbox']});
+	  const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
 	  const page = await browser.newPage();
 	  await page.goto('https://www.hostinger.co.id/domain-murah');
 	  const SEARCH_SELECTOR = '#cart_domain_search_domain';
@@ -25,20 +25,15 @@ app.get('/', function(req, res, next){
 
 			let data = []; // Create an empty array that will store our data
 			await new Promise(function(resolve) { 
-	           setTimeout(resolve, 10000) // this wait for domain respon in idhostinger
+	           setTimeout(resolve, 5000) // this wait for domain respon in idhostinger
 	    	});
-	    	//tr.pt-10:nth-child(1) > td:nth-child(2)   tr.pt-10:nth-child(2) > td:nth-child(2)
-	    	//tr.pt-10:nth-child(1) > td:nth-child(3)   tr.pt-10:nth-child(2) > td:nth-child(3)
-
-	    	//tr.pt-10:nth-child(8) > td:nth-child(3) > div:nth-child(2) > div:nth-child(1)
-	    	//tr.pt-10:nth-child(7) > td:nth-child(3) > div:nth-child(2) > div:nth-child(4)
-	        let elements = document.querySelectorAll('tr.pt-10'); // Select all domain
+	        let elements = document.querySelectorAll('tr.ng-scope'); // Select all domain
 
 	        //this path is a bit tricky u need u check the element selector first
 	        for (var i = 1; i <= elements.length; i++) {
-	        	let domain = document.querySelector('tr.pt-10:nth-child('+i+') > td:nth-child(1)').innerText;
-	        	let price = document.querySelector('tr.pt-10:nth-child('+i+') > td:nth-child(2)').innerText;
-	        	let status = document.querySelector('tr.pt-10:nth-child('+i+') > td:nth-child(3) > div:nth-child(2)').innerText;
+	        	let domain = document.querySelector('tr.ng-scope:nth-child('+i+') > td:nth-child(1)').innerText;
+	        	let price = document.querySelector('tr.ng-scope:nth-child('+i+') > td:nth-child(2)').innerText;
+	        	let status = document.querySelector('tr.ng-scope:nth-child('+i+') > td:nth-child(3)').innerText;
 	        	data.push({domain, price, status});
 			}
 			return data; // Return our data array
