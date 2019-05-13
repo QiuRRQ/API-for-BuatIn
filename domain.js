@@ -10,7 +10,7 @@ app.get('/', function(req, res, next){
 
 	let scrape = async () => {
 
-	  const browser = await puppeteer.launch({headless: false, args: ['--no-sandbox', '--disable-setuid-sandbox']});
+	  const browser = await puppeteer.launch({headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox']});
 	  const page = await browser.newPage();
 	  await page.goto('https://www.hostinger.co.id/domain-murah');
 	  const SEARCH_SELECTOR = '#cart_domain_search_domain';
