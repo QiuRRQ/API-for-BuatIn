@@ -10,10 +10,10 @@ app.get('/', function(req, res, next){
 
 	let scrape = async () => {
 
-	  const browser = await puppeteer.launch({headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox']});
+	  const browser = await puppeteer.launch({headless: false, args: ['--no-sandbox', '--disable-setuid-sandbox']});
 	  const page = await browser.newPage();
 	  await page.goto('https://www.hostinger.co.id/domain-murah');
-	  const SEARCH_SELECTOR = '#cart_domain_search_domain';
+	  const SEARCH_SELECTOR = '#domain-checker-input';
 	   
 	  const domain = req.query.domain;//this will be parsing parameter from get method express
 
@@ -21,7 +21,7 @@ app.get('/', function(req, res, next){
 
 	  const result = await page.evaluate(async () => {
 	  		//in here is all activity u did on the site page when it still open
-	  		document.querySelector('.search-form > input:nth-child(2)').click();
+	  		document.querySelector('#dc-button').click();
 
 			let data = []; // Create an empty array that will store our data
 			await new Promise(function(resolve) { 
@@ -36,7 +36,7 @@ app.get('/', function(req, res, next){
 
 	        //this path is a bit tricky u need u check the element selector first
 	        for (var i = 1; i <= elements.length; i++) {
-	        	let domain = document.querySelector('tr.pt-10:nth-child('+i+') > td:nth-child(1)').innerText;
+	        	let domain = document.querySelector('#dc-results > div:nth-child(3) > div > div:nth-child('+i+') > div > div > h5').innerText;
 	        	let price = document.querySelector('tr.pt-10:nth-child('+i+') > td:nth-child(2)').innerText;
 	        	let status = document.querySelector('tr.pt-10:nth-child('+i+') > td:nth-child(3) > div:nth-child(2)').innerText;
 	        	data.push({domain, price, status});
@@ -58,3 +58,4 @@ app.get('/', function(req, res, next){
 });
 //test
 app.listen(server_port);
+console.log('Web Server is listening at port '+ (process.env.port || 1214));

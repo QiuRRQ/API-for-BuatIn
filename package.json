@@ -15,9 +15,7 @@
 		"wayang": "^1.0.8"
 	},
 	"scripts": {
-	  "start": "node domain.js"
+		"start": "node domain.js"
 	},
 	"main": "domain.js"
-
-
 }
